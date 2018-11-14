@@ -72,14 +72,10 @@ export class AppComponent {
 
   sub: any;
 
-  
-
-  teste() {
-    
-
+  gerarTemperaturas() { 
     this.sub = Observable.interval(10000)
     .subscribe((val) => { 
-      console.log('called'); 
+      //console.log('called'); 
 
       this.containers.forEach(function (i){
         let tempAtualGerada: number;

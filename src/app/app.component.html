@@ -57,7 +57,7 @@
               <input type="number" [(ngModel)]="qtdContainers" class="form-control" id="inputQtdContainers" min="0"/>                  
           </div>
           <div class="form-group col-md-4" *ngIf="qtdContainers > 0">
-            <input type="button" (click)="teste()" value="Gerar Temperaturas" class="btn btn-success" [disabled]="verificaContainer()">
+            <input type="button" (click)="gerarTemperaturas()" value="Gerar Temperaturas" class="btn btn-success" [disabled]="verificaContainer()">
           </div>
           <div class="form-group col-md-4" *ngIf="qtdContainers > 0">
             <input type="button" (click)="stopGenerate()" value="Parar de Gerar" class="btn btn-danger" [disabled]="verificaContainer()">
