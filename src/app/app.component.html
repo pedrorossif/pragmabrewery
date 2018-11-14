@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Pedro Rossi">
+
+    <title>Code Challenge</title>
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Code Challenge</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h1 class="mt-5">Pragma Brewery</h1>
+          <p class="lead">Olá, meu nome é Pedro Rossi e desenvolvi essa primeira versão para solucionar o problema que foi passado no desafio.</p>
+          <p class="lead">Somente algumas observações para facilitar o entendimento:</p>
+          <ul>
+            <li>Você só poderá gerar temperaturas se preencher pelo menos 1 container.</li>
+            <li>As temperaturas são atualizadas de 10 em 10 segundos.</li>
+            <li>Nesse exemplo as temperaturas podem variar de 1°C a 9°C.</li>
+            <li>Você pode parar de gerar as temperaturas a qualquer momento e informá-las manualmente.</li>
+          </ul>           
+        </div>        
+      </div>
+
+      <div class="row">
+          <label for="inputQtdContainers">Informe a quantidade de containers que o caminhão vai levar:</label>  
+      </div> 
+      <div class="row">
+          <div class="row col-md-4">
+              <input type="number" [(ngModel)]="qtdContainers" class="form-control" id="inputQtdContainers" min="0"/>                  
+          </div>
+          <div class="form-group col-md-4" *ngIf="qtdContainers > 0">
+            <input type="button" (click)="teste()" value="Gerar Temperaturas" class="btn btn-success" [disabled]="verificaContainer()">
+          </div>
+          <div class="form-group col-md-4" *ngIf="qtdContainers > 0">
+            <input type="button" (click)="stopGenerate()" value="Parar de Gerar" class="btn btn-danger" [disabled]="verificaContainer()">
+          </div>
+      </div>       
+          
+      <div class="row" *ngIf="qtdContainers > 0">
+          <div *ngFor="let item of arrayOne(qtdContainers); let i = index;">
+            <div class="row col-md-12" style="padding-top: 15px">
+              <div class="row">
+                  <div class="col-md-12">
+                      <span>Container {{i+1}}: </span>
+                      <select class="form-control" (change)="gravar(i,$event.target.value)">
+                          <option *ngFor = "let cerveja of cervejas" [ngValue]="cerveja">{{cerveja.nome}}</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="row" style="padding-top: 5px;">
+                  <div class="col-md-12">
+                      <span>Temperatura atual:</span>    
+                      <input type="number" class="form-control" (change)="verificaTemperatura(i,$event.target.value)" [value]="containers[i]?.tempAtual">
+                      <div class="alert alert-danger" role="alert" *ngIf="containers[i]?.tempStatus == 'acima'">
+                          Temperatura acima do ideal!
+                      </div>
+                      <div class="alert alert-warning" role="alert" *ngIf="containers[i]?.tempStatus == 'abaixo'">
+                          Temperatura abaixo do ideal!
+                      </div>                   
+                  </div>
+              </div>
+                                          
+            </div>          
+          </div>
+        </div>
+    </div>
+  </body>
+
+</html>
