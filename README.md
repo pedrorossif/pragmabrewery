@@ -1,31 +1,24 @@
-# PragmabreweryDeploy
+# Pragma Brewery Code Challenge
+Esse código foi desenvolvido para demonstrar uma possível solução para um cenário onde uma empresa que fabrica cervejas, ao transportá-las utilizando refrigeradores, solicitou um sistema que informasse o condutor do caminhão caso algum refrigerador se encontrasse com a temperatura superior ou inferior ao nível de temperatura ideal de cada cerveja.
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.28.3.
+## Sobre a solução desenvolvida
+A ideia foi chegar o mais próximo possível de um cenário real quando se tratava de informar as temperaturas. Inicialmente deve-se informar quantos refrigeradores estão sendo transportados.
 
-## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+No sistema existe a opção de gerar temperaturas aleatórias pra cada refrigerador, simulando o cenário onde de tempos em tempos a temperatura muda nos refrigeradores e informaria o sistema de imediato. Para cada refrigerador deve-se informar o tipo de cerveja que ele está transportando, pois a partir disso que será informado se a temperatura atual está superior ou inferior a temperatura ideal.
 
-## Code scaffolding
+Também é possível parar a atualização de temperaturas e informá-las manualmente.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
+OBS: No documento não ficou claro se as temperaturas eram positivas ou negativas, a lógica está feita supondo que são positivas, por exemplo a `Beer 1 (Pilsner)` tem a temperatura ideal entre 4°C e 6°C.
 
-## Build
+## Sobre as linguagens utilizadas
+Criei um projeto inicial utilizando [angular-cli](https://github.com/angular/angular-cli) e importei baixei os módulos do node do bootstrap para o front-end e do express para subir a aplicação no Heroku.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+## Melhorias futuras
+- Utilizar o MongoDB para armazenamento dos dados;
+- Permitir o cadastro da cidade de entrega, pois caso o negócio se expanda já exista a opção de cadastras diferentes cidades;
+- Cada cidade tem uma média de temperatura e a partir dessa média ter um conhecimento se será necessário deixar os refrigeradores em uma potência maior ou menor;
+- Permitir que um refrigerador transporte mais de um tipo de cerveja, garantindo claro que a temperatura atenda os dois casos;
+- Caso a temperatura ideal das cervejas mude de uma cidade pra outra, implementar também um cadastro para as temperaturas por cidade
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Deploying to GitHub Pages
-
-Run `ng github-pages:deploy` to deploy to GitHub Pages.
-
-## Further help
-
-To get more help on the `angular-cli` use `ng help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Heroku
+A aplicação pode ser acessada clicando [aqui](https://pragmabrewery-deploy.herokuapp.com/).
